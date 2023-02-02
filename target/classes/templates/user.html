@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User profile: </title>
+</head>
+<body>
+<div>
+    <table class="table table - dark">
+        <thead>
+        <tr>
+            <th scope="col">Your username</th>
+            <th scope="col">Your name</th>
+            <th scope="col">Your surname</th>
+            <th scope="col">Your password</th>
+            <th scope="col">Your roles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text = "${user.username}"/>
+            <td th:text = "${user.name}"/>
+            <td th:text = "${user.surname}"/>
+            <td th:text = "${user.password}"/>
+            <td th:text = "${user.roles}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<form>
+    <input type="button" onclick="window.location.href = 'http://localhost:8080/index';" value="Back to index page"/>
+</form>
+
+<br>
+
+<div class="text-center">
+    <form th:action="@{/logout}" th:method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
+</div>
+
+</body>
+</html>
+
+

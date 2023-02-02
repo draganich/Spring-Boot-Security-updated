@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user:</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${chosenUser.getId()})}" th:object="${chosenUser}">
+
+    <label for="username">Enter username:</label>
+    <input type="text" th:field="*{username}" id="username"/><br>
+    <br>
+    <label for="name">Enter name:</label>
+    <input type="text" th:field="*{name}" id="name"/><br>
+    <br>
+    <label for="surname">Enter surname</label>
+    <input type="text" th:field="*{surname}" id="surname"/><br>
+    <br>
+    <label for="password">Enter password:</label>
+    <input type="text" th:field="*{password}" id="password"/><br>
+    <br>
+    <div class="form-group">
+        <label>Choose roles:</label>
+        <div>
+            <label for="roles"></label><input type="checkbox" id="roles" th:each="role:${rolesList}"
+                                              th:field="*{roles}"
+                                              th:value="${role.id}"
+                                              th:text="${role}"/>
+        </div>
+    </div>
+    <br>
+    <input type="submit" value = "Update!"/>
+    <br>
+
+    <br>
+</form>
+<form th:method="DELETE" th:action="@{/admin/{id}(id=${chosenUser.getId()})}" th:object="${chosenUser}">
+    <input type="submit" value="Delete!"/>
+</form>
+
+<br>
+<form>
+    <input type="button" onclick="window.location.href = 'http://localhost:8080/admin';" value="Back"/>
+</form>
+<br>
+
+<form th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+</body>
+</html>

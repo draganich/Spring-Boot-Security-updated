@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All users: </title>
+</head>
+<body>
+<div>
+    <table class="table table - dark">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Password</th>
+            <th scope="col">Roles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "user: ${users}" >
+            <td th:text = "${user.id}"/>
+            <td th:text = "${user.username}"/>
+            <td th:text = "${user.name}"/>
+            <td th:text = "${user.surname}"/>
+            <td th:text = "${user.password}"/>
+            <td th:text = "${user.roles}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<form>
+    <input type="button" onclick="window.location.href = 'http://localhost:8080/admin/create';" value="Create user"/>
+</form>
+
+<br>
+
+<form name="updateForm">
+    <label>
+        <input type="number" name="id" value="2">
+    </label>
+    <input type="button" value="User to be edited ID" onclick="window.location.href='http://localhost:8080/admin/'+escape(document.forms['updateForm'].elements['id'].value+'/update')">
+</form>
+
+<br>
+<div class="text-center"><input type="button" value="Your profile" onclick="window.location.href = '/user'"/></div>
+<br>
+
+<div class="text-center">
+    <form th:action="@{/logout}" th:method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
+</div>
+
+</body>
+</html>
+
+
